@@ -1,0 +1,201 @@
+@font-face {
+  font-family: Pacifico;
+  src: url(Pacifico-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(MontserratAlternates-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(MontserratAlternates-Regular.ttf);
+  font-weight: regular;
+}
+body>header>a{
+  width: auto;
+  height: fit-content;
+}
+*{
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans;
+}
+h1{
+  font-family: 'Pacifico', arial, helvetica, sans-serif;
+  font-size: 4.5rem;
+  text-decoration: none;
+}
+header>a>img.col-3{
+  width: 16%;
+}
+.btn{
+  box-shadow: 0 4px 10px 6px rgba(0, 0, 0, .25);
+}
+header>a.px-4.btn-primary.btn, div.cardochka>.btn, .d-flex.flex-column.gap-75.mt-75.align-items-center>.btn{
+  padding: 15px 23px 15px 23px !important;
+}
+.bold{
+  font-weight: bold;
+}
+.cardochka{
+  border-radius: 83px;
+  box-shadow: 0 12px 30px 6px rgba(0, 0, 0, .25);
+}
+.border-radius{
+  border-radius: 83px;
+}
+.col-55{
+  width: 47.7%;
+}
+.py-30{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.py-70{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.px-40{
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.px-77{
+  padding-right: 77px;
+  padding-left: 77px;
+}
+
+.px-250{
+  padding-right: 250px;
+  padding-left: 250px;
+}
+.gap-10{
+  gap: 10px;
+}
+.gap-60{
+  gap: 60px;
+}
+.gap-75{
+  gap: 75px;
+}
+.green-background{
+  color: white;
+  background-color: #1AEF56;
+}
+.red-background{
+  color: white;
+  background-color: #E55121;
+}
+.red-background:hover{
+  color: #E55121 !important;
+}
+.green-background:hover{
+  color: #1AEF56 !important;
+}
+.cardochka.btn{
+  padding: 35px 40px 35px 40px;
+  border-radius: 15px;
+  width: 200px;
+}
+
+.d-flex.gap-5.flex-column.container{
+  padding-top: 70px;
+  padding-bottom: 140px;
+}
+.d-flex.flex-column.gap-75.mt-75.align-items-center{
+  padding-bottom: 140px;
+}
+
+.width-600{
+  width: 600px !important;
+}
+.width-270{
+  width: 270px !important;
+}
+
+input.width-600.fs-5,select.width-600.fs-5{
+  padding: 30px 40px 30px 40px;
+}
+
+.text-gray{
+  color: var(--bs-gray) !important;
+}
+
+/* Скрыть оригинальное отображение стрелки в теге <select> */
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Добавить кастомную стрелку */
+  background-image: url('bxs_up-arrow.svg');
+  background-position: calc(100% - 40px) center;
+  background-repeat: no-repeat;
+  /* Для кроссбраузерной совместимости добавим еще одну стрелку, в случае если первая не сработает */
+  background-image: url('bxs_up-arrow.svg');
+}
+
+/* Скрыть стандартные стрелки выпадающего списка */
+select::-ms-expand {
+  display: none;
+}
+
+.mt-75{
+  margin-top: 75px;
+}
+
+strong{
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+}
+
+
+.fs-21{
+  font-size: 21px;
+}
+.fs-22{
+  font-size: 22px;
+}
+.fs-40{
+  font-size: 40px;
+}
+.fs-58{
+  font-size: 58px;
+}
+
+.text-indent{
+  text-indent: 30px;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+
+@media(max-width:1200px){
+  .col-55{
+    width: 100%;
+  }
+}
+@media(max-width:992px){
+  h1{
+    font-size: 3.5rem;
+  }
+  .px-250{
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+@media(max-width:768px){
+  h1{
+    font-size: 3.5rem;
+  }
+}
+@media(max-width:576px){
+  .col-55{
+    width: 90%;
+  }
+}
+@media(max-width:472px){
+  h1{
+    font-size: 2.5rem;
+  }
+}
