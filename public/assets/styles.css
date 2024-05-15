@@ -22,7 +22,7 @@ body>header>a{
 h1{
   font-family: 'Pacifico', arial, helvetica, sans-serif;
   font-size: 4.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 header>a>img.col-3{
   width: 16%;
@@ -148,11 +148,17 @@ strong{
 }
 
 
+.fs-20{
+  font-size: 20px;
+}
 .fs-21{
   font-size: 21px;
 }
 .fs-22{
   font-size: 22px;
+}
+.fs-24{
+  font-size: 24px;
 }
 .fs-40{
   font-size: 40px;
@@ -167,6 +173,9 @@ strong{
 
 .cursor{
   cursor: pointer;
+}
+.deco-none{
+  text-decoration: none !important;
 }
 
 

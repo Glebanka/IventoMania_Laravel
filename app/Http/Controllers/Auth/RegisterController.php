@@ -4,40 +4,44 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\UserTypes;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
+  /**
+     * Show the registration form.
      *
-     * @var string
+     * @return \Illuminate\View\View
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showRegisterForm()
     {
-        $this->middleware('guest');
+        return view('auth.register');
+    }
+    /**
+     * Handle an incoming registration request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $user = $this->create($request->all());
+
+        // Additional logic after registration, like sending emails, etc.
+
+        return redirect()->route('login')->with('success', 'Регистрация успешна! Теперь вы можете войти.');
     }
 
     /**
@@ -48,12 +52,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-      return Validator::make($data, [
-        'fullname' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'email', 'string', 'max:255'],
-        'tel' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-      ]);
+        return Validator::make($data, [
+            'tel' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'fullname' => ['required', 'string', 'max:255'],
+            'age' => ['required', 'integer', 'max:255'],
+            'email' => ['required', 'email', 'string', 'max:255', 'unique:users'],
+            'pass' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'in:1,2'],
+        ]);
     }
 
     /**
@@ -64,9 +70,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+      // dd($data);
         return User::create([
             'tel' => $data['tel'],
-            'password' => Hash::make($data['password']),
+            'fullname' => $data['fullname'],
+            'age' => $data['age'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['pass']),
+            'user_type_id' => $data['role'],
         ]);
     }
 }
